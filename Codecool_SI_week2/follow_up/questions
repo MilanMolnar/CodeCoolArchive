@@ -1,0 +1,25 @@
+ 1. What's the difference between a global and local variable?
+     Answer: The scope and the lifetime.
+
+ 2. What are the pros and cons of using global variables?
+     Answer: Pro: You can access then anywhere inside the code after assignement. Con: Causes unpredictable behaviour.
+
+ 3. What is the assignment operator?
+     Answer: "=" is used to assign value to a variable.
+
+ 4. What does the global keyword mean in Python?
+     Answer: If you assign a value to a variable with the keyword global inside a function you can access it globally.
+
+ 5. What are constants?
+     Answer: Constans are non-existant inside python, it is a way of assignement so the variable is immutable
+         Sidenote: It is generally the practice to indicate a "constant" variable with a name written with all Caps.
+
+ 6. What's the difference between mutable and immutable variable types?
+     Answer: Mutable means it can be changed immutable means it can not.
+
+ 7. What is type conversion? What's the difference between implicit and explicit type conversion?
+     Answer: Implicit type conversion is where python gives the variable a type based on the form which usually indicates
+             the use. Explicit is when you give it a type with a converter function.
+
+ 8. How is string formatting done in Python?
+     Answer: Usually with built in functions.

@@ -1,0 +1,29 @@
+Game of chance: WWIII2020
+
+
+Terminator3
+Hp:  90
+Dmg: 15
+Acc: 20
+NoS: 30
+
+
+Rambo
+Hp:  100
+Dmg: 20
+Acc: 15
+NoS: 25
+
+
+John Doe
+Hp:  50
+Dmg: 10
+Acc: 70
+NoS: 40
+
+
+Geralt
+Hp:  80
+Dmg: 25
+Acc: 75
+NoS: 4

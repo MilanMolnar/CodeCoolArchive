@@ -1,0 +1,15 @@
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\CsharpPa.exe
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\CsharpPa.deps.json
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\CsharpPa.runtimeconfig.json
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\CsharpPa.runtimeconfig.dev.json
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\CsharpPa.dll
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\CsharpPa.pdb
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\obj\Debug\netcoreapp3.0\CsharpPa.csprojAssemblyReference.cache
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\obj\Debug\netcoreapp3.0\CsharpPa.AssemblyInfoInputs.cache
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\obj\Debug\netcoreapp3.0\CsharpPa.AssemblyInfo.cs
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\obj\Debug\netcoreapp3.0\CsharpPa.dll
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\obj\Debug\netcoreapp3.0\CsharpPa.pdb
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\ConsoleTables.dll
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\obj\Debug\netcoreapp3.0\CsharpPa.csproj.CopyComplete
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\Alba.CsConsoleFormat.dll
+C:\Users\Milan developer\Desktop\asdasdasdasd\CsharpPa\CsharpPa\bin\Debug\netcoreapp3.0\Portable.Xaml.dll

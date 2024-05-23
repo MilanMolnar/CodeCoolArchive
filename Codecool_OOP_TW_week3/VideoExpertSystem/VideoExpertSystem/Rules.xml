@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Rules>
+    <Rule id="Humour">
+        <Question>Do you want to laugh?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <MultipleValue value="no,nope,nyet,noway,nine"/>
+            </Selection>
+        </Answer>
+    </Rule>
+    
+	<Rule id="Educate">
+        <Question>Do you want to educate yourself?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="no"/>
+            </Selection>
+        </Answer>
+    </Rule>
+	
+	<Rule id="Music">
+        <Question>Do you want to listen to music?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <MultipleValue value="no,nope,nyet,noway,nine"/>
+            </Selection>
+        </Answer>
+    </Rule>
+	
+	<Rule id="Gameplay">
+        <Question>Do you want to watch videos about animals?</Question>
+        <Answer>
+            <Selection value="true">
+                <SingleValue value="yes"/>
+            </Selection>
+            <Selection value="false">
+                <SingleValue value="no"/>
+            </Selection>
+        </Answer>
+    </Rule>
+</Rules>

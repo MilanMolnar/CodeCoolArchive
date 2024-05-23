@@ -1,0 +1,664 @@
+import time
+import sys
+import random
+
+
+def replaySingle():
+    while True:
+        restart = input("Szeretnél istmét játszani? [Y/N]: ")
+
+        if restart in ["y", "Y"]:
+            print("Új játék!\n\n\n")
+            single_player()
+        elif restart is "N" or restart is "n":
+            print("Szép napot!")
+            exit()
+        else:
+            print("Kirtésiumoknak megfelelő választ adj!")
+            continue
+
+
+def replayMulti():
+    while True:
+        restart = input("Szeretnél istmét játszani? [Y/N]: ")
+
+        if restart in ["y", "Y"]:
+            print("Új játék!\n\n\n")
+            multi_player()
+        elif restart is "N" or restart is "n":
+            print("Szép napot!")
+            exit()
+        else:
+            print("Kirtériumoknak megfelelő választ adj!")
+            continue
+
+
+def replaySpec():
+    while True:
+        restart = input("Szeretnéd újra nézni őket? [Y/N]: ")
+
+        if restart in ["y", "Y"]:
+            print("Új játék!\n\n\n")
+            spectator_player()
+        elif restart is "N" or restart is "n":
+            print("Szép napot!")
+            exit()
+        else:
+            print("Kirtériumoknak megfelelő választ adj!")
+            continue
+
+
+def AILoad():
+    for i in range(1, 5):
+        sys.stdout.write('\rAI választ |')
+        time.sleep(0.1)
+        sys.stdout.write('\rAI választ  /')
+        time.sleep(0.1)
+        sys.stdout.write('\rAI választ  -')
+        time.sleep(0.1)
+        sys.stdout.write('\rAI választ  \\')
+        time.sleep(0.1)
+    sys.stdout.write('\rAI választ        ')
+    print("\n")
+
+
+def multi_player():
+    def x_win(map):
+        if map[0][0] == "X" and map[0][1] == "X" and map[0][2] == "X":
+            return True
+        elif map[1][0] == "X" and map[1][1] == "X" and map[1][2] == "X":
+            return True
+        elif map[2][0] == "X" and map[2][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][0] == "X" and map[2][0] == "X":
+            return True
+        elif map[0][1] == "X" and map[1][1] == "X" and map[2][1] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][2] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][1] == "X" and map[2][0] == "X":
+            return True
+        else:
+            return False
+
+    def o_win(map):
+        if map[0][0] == "O" and map[0][1] == "O" and map[0][2] == "O":
+            return True
+        elif map[1][0] == "O" and map[1][1] == "O" and map[1][2] == "O":
+            return True
+        elif map[2][0] == "O" and map[2][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][0] == "O" and map[2][0] == "O":
+            return True
+        elif map[0][1] == "O" and map[1][1] == "O" and map[2][1] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][2] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][1] == "O" and map[2][0] == "O":
+            return True
+        else:
+            return False
+
+    def tie(map):
+        if map[0][0] != " " and map[0][1] != " " and map[0][2] != " " and map[1][0] != " " and map[1][1] != " " \
+                                                                                                            "" and \
+                map[1][2] != " " and map[2][0] != " " and map[2][1] != " " and map[2][2] != " ":
+            return True
+
+    def IntTester(prompt):
+        while True:
+            try:
+                x = int(input(prompt))
+            except ValueError:
+                print("Nem számot adtál meg!")
+                continue
+            if isinstance(x, int):
+                return x
+
+    def draw_map():
+        map = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ]
+        for i in range(len(map)):
+            print(map[i])
+        return map
+
+    def draw(changed_map):
+        for i in range(len(changed_map)):
+            print(changed_map[i])
+        return changed_map
+
+    def change_x(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = IntTester("Add meg a sort: ") - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            while True:
+                y_player_y_coord = IntTester("Add meg az oszlopot: ") - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "X"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                print("A megadott koordinátákon már van szimbólum!")
+                time.sleep(2)
+                continue
+
+    def change_o(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = IntTester("Add meg a sort: ") - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            while True:
+                y_player_y_coord = IntTester("Add meg az oszlopot: ") - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "O"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                print("A megadott koordinátákon már van szimbólum!")
+                time.sleep(2)
+                continue
+
+    map = draw_map()
+    for i in range(999999999):
+        if i % 2 == 0:
+            print("X játékos jön!")
+            changed_map = change_x(map)
+        else:
+            print("O játékos jön!")
+            changed_map = change_o(map)
+        changed_map = draw(changed_map)
+        if o_win(map) == True:
+            print("O játékos nyert!")
+            replayMulti()
+
+        elif x_win(map) == True:
+            print("X jatékos nyert!")
+            replayMulti()
+
+        elif tie(map) == True:
+            print("Döntetlen")
+            replayMulti()
+
+
+def single_player():
+    def x_win(map):
+        if map[0][0] == "X" and map[0][1] == "X" and map[0][2] == "X":
+            return True
+        elif map[1][0] == "X" and map[1][1] == "X" and map[1][2] == "X":
+            return True
+        elif map[2][0] == "X" and map[2][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][0] == "X" and map[2][0] == "X":
+            return True
+        elif map[0][1] == "X" and map[1][1] == "X" and map[2][1] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][2] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][1] == "X" and map[2][0] == "X":
+            return True
+        else:
+            return False
+
+    def o_win(map):
+        if map[0][0] == "O" and map[0][1] == "O" and map[0][2] == "O":
+            return True
+        elif map[1][0] == "O" and map[1][1] == "O" and map[1][2] == "O":
+            return True
+        elif map[2][0] == "O" and map[2][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][0] == "O" and map[2][0] == "O":
+            return True
+        elif map[0][1] == "O" and map[1][1] == "O" and map[2][1] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][2] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][1] == "O" and map[2][0] == "O":
+            return True
+        else:
+            return False
+
+    def tie(map):
+        if map[0][0] != " " and map[0][1] != " " and map[0][2] != " " and map[1][0] != " " and map[1][1] != " " \
+                                                                                                            "" and \
+                map[1][2] != " " and map[2][0] != " " and map[2][1] != " " and map[2][2] != " ":
+            return True
+
+    def IntTester(prompt):
+        while True:
+            try:
+                x = int(input(prompt))
+            except ValueError:
+                print("Nem számot adtál meg!")
+                continue
+            if isinstance(x, int):
+                return x
+
+    def draw_map():
+        map = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ]
+        for i in range(len(map)):
+            print(map[i])
+        return map
+
+    def draw(changed_map):
+        for i in range(len(changed_map)):
+            print(changed_map[i])
+        return changed_map
+
+    def change_x(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = IntTester("Add meg a sort: ") - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            while True:
+                y_player_y_coord = IntTester("Add meg az oszlopot: ") - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "X"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                print("A megadott koordinátákon már van szimbólum!")
+                time.sleep(2)
+                continue
+
+    def change_o(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = random.randint(1, 3) - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            while True:
+                y_player_y_coord = random.randint(1, 3) - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "O"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                time.sleep(2)
+                continue
+
+    map = draw_map()
+    for i in range(999999999):
+        if i % 2 == 0:
+            print("Játékos jön!")
+            changed_map = change_x(map)
+        else:
+            AILoad()
+            changed_map = change_o(map)
+        changed_map = draw(changed_map)
+        if o_win(map) == True:
+            print("AI nyert!")
+            replaySingle()
+        elif x_win(map) == True:
+            print("Jatékos nyert!")
+            replaySingle()
+        elif tie(map) == True:
+            print("Döntetlen")
+            replaySingle()
+
+
+def AI_player():
+    def x_win(map):
+        if map[0][0] == "X" and map[0][1] == "X" and map[0][2] == "X":
+            return True
+        elif map[1][0] == "X" and map[1][1] == "X" and map[1][2] == "X":
+            return True
+        elif map[2][0] == "X" and map[2][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][0] == "X" and map[2][0] == "X":
+            return True
+        elif map[0][1] == "X" and map[1][1] == "X" and map[2][1] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][2] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][1] == "X" and map[2][0] == "X":
+            return True
+        else:
+            return False
+
+    def o_win(map):
+        if map[0][0] == "O" and map[0][1] == "O" and map[0][2] == "O":
+            return True
+        elif map[1][0] == "O" and map[1][1] == "O" and map[1][2] == "O":
+            return True
+        elif map[2][0] == "O" and map[2][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][0] == "O" and map[2][0] == "O":
+            return True
+        elif map[0][1] == "O" and map[1][1] == "O" and map[2][1] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][2] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][1] == "O" and map[2][0] == "O":
+            return True
+        else:
+            return False
+
+    def tie(map):
+        if map[0][0] != " " and map[0][1] != " " and map[0][2] != " " and map[1][0] != " " and map[1][1] != " " \
+                                                                                                            "" and \
+                map[1][2] != " " and map[2][0] != " " and map[2][1] != " " and map[2][2] != " ":
+            return True
+
+    def IntTester(prompt):
+        while True:
+            try:
+                x = int(input(prompt))
+            except ValueError:
+                print("Nem számot adtál meg!")
+                continue
+            if isinstance(x, int):
+                return x
+
+    def draw_map():
+        map = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ]
+        for i in range(len(map)):
+            print(map[i])
+        return map
+
+    def draw(changed_map):
+        for i in range(len(changed_map)):
+            print(changed_map[i])
+        return changed_map
+
+    def change_x(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = IntTester("Add meg a sort: ") - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            while True:
+                y_player_y_coord = IntTester("Add meg az oszlopot: ") - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    print('A megadott szám a pályán kívül van!')
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "X"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                print("A megadott koordinátákon már van szimbólum!")
+                time.sleep(2)
+                continue
+
+    def change_o(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = random.randint(0, 2)
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            while True:
+                y_player_y_coord = random.randint(1, 3) - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "O"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                time.sleep(2)
+                continue
+
+    map = draw_map()
+    for i in range(999999999):
+        if i % 2 == 0:
+            print("Játékos jön!")
+            changed_map = change_x(map)
+        else:
+            AILoad()
+            changed_map = change_o(map)
+        changed_map = draw(changed_map)
+        if o_win(map) == True:
+            print("AI nyert!")
+            replaySingle()
+        elif x_win(map) == True:
+            print("Jatékos nyert!")
+            replaySingle()
+        elif tie(map) == True:
+            print("Döntetlen")
+            replaySingle()
+
+
+def spectator_player():
+    def x_win(map):
+        if map[0][0] == "X" and map[0][1] == "X" and map[0][2] == "X":
+            return True
+        elif map[1][0] == "X" and map[1][1] == "X" and map[1][2] == "X":
+            return True
+        elif map[2][0] == "X" and map[2][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][0] == "X" and map[2][0] == "X":
+            return True
+        elif map[0][1] == "X" and map[1][1] == "X" and map[2][1] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][2] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][0] == "X" and map[1][1] == "X" and map[2][2] == "X":
+            return True
+        elif map[0][2] == "X" and map[1][1] == "X" and map[2][0] == "X":
+            return True
+        else:
+            return False
+
+    def o_win(map):
+        if map[0][0] == "O" and map[0][1] == "O" and map[0][2] == "O":
+            return True
+        elif map[1][0] == "O" and map[1][1] == "O" and map[1][2] == "O":
+            return True
+        elif map[2][0] == "O" and map[2][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][0] == "O" and map[2][0] == "O":
+            return True
+        elif map[0][1] == "O" and map[1][1] == "O" and map[2][1] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][2] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][0] == "O" and map[1][1] == "O" and map[2][2] == "O":
+            return True
+        elif map[0][2] == "O" and map[1][1] == "O" and map[2][0] == "O":
+            return True
+        else:
+            return False
+
+    def tie(map):
+        if map[0][0] != " " and map[0][1] != " " and map[0][2] != " " and map[1][0] != " " and map[1][1] != " " \
+                                                                                                            "" and \
+                map[1][2] != " " and map[2][0] != " " and map[2][1] != " " and map[2][2] != " ":
+            return True
+
+    def IntTester(prompt):
+        while True:
+            try:
+                x = int(input(prompt))
+            except ValueError:
+                print("Nem számot adtál meg!")
+                continue
+            if isinstance(x, int):
+                return x
+
+    def draw_map():
+        map = [
+            [" ", " ", " "],
+            [" ", " ", " "],
+            [" ", " ", " "]
+        ]
+        for i in range(len(map)):
+            print(map[i])
+        return map
+
+    def draw(changed_map):
+        for i in range(len(changed_map)):
+            print(changed_map[i])
+        return changed_map
+
+    def change_x(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = random.randint(1, 3) - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            while True:
+                y_player_y_coord = random.randint(1, 3) - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "O"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                time.sleep(2)
+                continue
+
+    def change_o(map):
+        while True:
+            x_moves = []
+            while True:
+                y_player_x_coord = random.randint(1, 3) - 1
+                if y_player_x_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            while True:
+                y_player_y_coord = random.randint(1, 3) - 1
+                if y_player_y_coord in [0, 1, 2]:
+                    break
+                else:
+                    continue
+            x_moves.append(y_player_x_coord)
+            x_moves.append(y_player_y_coord)
+            x = x_moves[0]
+            y = x_moves[1]
+            if map[x][y] == " ":
+                map[x][y] = "X"
+                return map
+            elif map[x][y] == "O" or map[x][y] == "X":
+                continue
+
+    map = draw_map()
+    for i in range(999999999):
+        if i % 2 == 0:
+            AILoad()
+            changed_map = change_x(map)
+        else:
+            AILoad()
+            changed_map = change_o(map)
+        changed_map = draw(changed_map)
+        if o_win(map) == True:
+            print("O nyert!")
+            replaySpec()
+        elif x_win(map) == True:
+            print("X nyert!")
+            replaySpec()
+        elif tie(map) == True:
+            print("Döntetlen")
+            replaySpec()
+
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == "Singleplayer":
+        single_player()
+    elif sys.argv[1] == "Multiplayer":
+        multi_player()
+    elif sys.argv[1] == 'Spectator':
+        spectator_player()
+    else:
+        exit()
+else:
+    print("Upsz, valamit elírtál!")

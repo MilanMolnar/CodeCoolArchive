@@ -1,0 +1,132 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>News</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="container">
+        <nav class="navbar navbar-inverse " style="border-bottom-width: thick">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">FakeNews</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li id="home-button" onclick="Home()"><a>Home</a></li>
+                    <li id="today-news-button" onclick="ShowTodayNews()"><a>Today's News</a></li>
+                    <li id="news-button" onclick="ShowAllNews()"><a>News</a></li>
+                    <li id="myfeed-button" onclick="ShowMyFeed()"><a>My Feed</a></li>
+                    <li id="publish-button" onclick="ShowPublish()"><a>Publish News</a></li>
+                    <li id="profile-button" onclick="ShowProfile()"><a>Profile</a></li>
+                </ul>
+                <form class="navbar-form navbar-left" onclick="searchNews()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Type the articles name...">
+                    </div>
+                    <button class="btn btn-default" style="right:10px ">Search</button>
+                </form>
+                <ul class="nav navbar-nav" id="accoun-bar">
+                    <li id="user-information"><a></a></li>
+                    <li id="login-button" onclick="ShowLogin()"><a>Log in</a></li>
+                    <li id="register-button" onclick="ShowSignIn()"><a>Sign in</a></li>
+                    <li style="display: none" id="logout-button" onclick="ShowLogout()"><a>Log out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="home-header">
+        <h2 style="">Fake news!</h2>
+        <h3>The most unbelievable stories with the least amount of research.</h3>
+    </div>
+    <div class="grid-container" id="home-feed">
+        <div class="three" id="grid-element">
+            <div class="threeTitle"></div>
+            <div class="threeContent"></div>
+        </div>
+        <div class="four" id="grid-element">
+            <div class="fourTitle"></div>
+            <div class="fourContent"></div>
+        </div>
+        <div class="five" id="grid-element">
+            <div class="fiveTitle"></div>
+            <div class="fiveContent"></div>
+        </div>
+        <div class="one" id="grid-element">
+            <div class="oneTitle"></div>
+            <div class="oneContent"></div>
+        </div>
+        <div class="two" id="grid-element">
+            <div class="twoTitle"></div>
+            <div class="twoContent"></div>
+        </div>
+        <div class="six" id="grid-element">
+            <div class="sixTitle"></div>
+            <div class="sixContent"></div>
+        </div>
+        <div class="seven" id="grid-element">
+            <div class="sevenTitle"></div>
+            <div class="sevenContent"></div>
+        </div>
+        <div class="eight" id="grid-element">
+            <div class="eightTitle"></div>
+            <div class="eightContent"></div>
+        </div>
+    </div>
+    <div id="login_table">
+        <p id="login-title">Login</p><br>
+        <p style="text-align:center" id="login-status">Fill in the required fields</p>
+        <input placeholder="User name" type="text" id="user-name-login"> <br>
+        <input placeholder="Password" type="password" id="user-pass-login"> <br>
+        <button onclick="LogInUser()" id="login-user-button">Log in</button>
+    </div>
+    <div id="register_table">
+        <p id="register-title">Register</p><br>
+        <p style="text-align:center" id="register-status">Fill in the required fields</p>
+        <input placeholder="User name" type="text" id="user-name-register"> <br>
+        <input placeholder="Password" type="password" id="user-pass-register"> <br>
+        <input placeholder="Confirm - Password" type="password" id="user-pass-confirm-register"> <br>
+        <button onclick="RegisterUser()" id="register-user-button">Register</button>
+    </div>
+    <div id="publish_table">
+        <p id="register-title">Write an article</p><br>
+        <input placeholder="Article's title" type="text" id="article-title"> <br>
+        <input placeholder="Article's author" type="text" id="article-author"> <br>
+        <textarea id="article-content" rows="8" cols="90" name="comment" form="usrform" placeholder="Article content..."></textarea><br>
+        <button onclick="PublishArticle()" id="publish-user-button">Publish</button>
+    </div>
+    <div id="one-article_table">
+        <p id="one-article-title">faketitel</p><br>
+        <p id="one-article-author">fakeauthor</p><br>
+        <p id="one-article-date">1992-12-12 21:21pm</p><br>
+        <p id="one-article-content">asdadadadasdasdasdasdadadsadadasdadasdadasdasdasdasdasdasdadasdasdasdasdasdasdasdadsasdasdasdasdasdadadasdadasdasd</p><br>
+    </div>
+    <div id="profile-table">
+        <p id="profile-user"></p>
+            <button id="proflie-authors-btn" onclick="ProfileAuthors()">Authors</button>
+            <button id="proflie-my-articles-btn" onclick="ShowProfilMyArticles()">My Articles</button>
+
+        <div id="my-news-table">
+            <select name="myNews" id="my-news-select">
+                <option id="newsid1" value="newsid1">mynews1</option>
+                <option id="newsid1" value="newsid1">mynews1</option>
+                <option id="newsid1" value="newsid1">mynews1</option>
+                <option id="newsid1" value="newsid1">mynews1</option>
+            </select>
+            <input type="Button" id="delete-my-news" onclick="DeleteMynews()" value="Delete" />
+            <input type="Button" id="edit-my-news" onclick="EditMyNews()" value="Edit" /><br />
+        </div>
+        <div id="authors-table">
+            <select name="authors" id="author-select">
+            </select>
+            <input type="Button" id="delete-subscription" onclick="Subscribe()" value="Subscribe" />
+            <input type="Button" id="add-subscription" onclick="UnSubscribe()" value="Unsubscribe" />
+        </div>
+        </div>
+
+        <div id="renderNewsList"></div>
+        <script src="js/script.js"></script>
+</body>
+</html>

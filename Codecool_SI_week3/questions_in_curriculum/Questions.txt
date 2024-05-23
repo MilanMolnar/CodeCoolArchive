@@ -1,0 +1,40 @@
+What are the three major groups of programming errors? Give an example to each of them!
+a, Syntax errors, Logical errors, Runtime errors
+b, Syntax e.: Missing pparenthesis in a print statement example(print"foo")
+   Logical e.: Indenting a block to the wrong level.
+   Runtime e.: Division by zero.
+
+What are exceptions in Python?
+Errors in the program.
+
+What is the try-except statement good for in Python?
+Catching errors(exceptions) and reacting accordingly.
+
+What is the structure of the try and except statement in Python? Which statement can be used multiple times?
+a, try, colon, new line, the code wanted to be tested, expect, colon or the type of error wanted to be catched and colon/
+finally in new line the reacting code that is getting executed when it catches the error.
+b, After "except" you can give multiple causes of exceptions.
+
+When should we use if and when try and except in our code to prevent errors in Python?
+When we want to check what kind of error we get.
+
+What does the else and finally statement in a try-except block in Python?
+Executes if try claus doesent raise any error.
+
+How to print out the details of the exception occured in Python?
+Error can be saved as a variable and printed later on.
+
+What is the raise statement good for in Python?
+raises the error you want to raise.
+
+What techniques can you use while debugging a program in Python?
+Print statements are effective although not recommended, professionally we want to use Logging.
+
+What is logging and how does it work in Python?
+Saves the error message according to our settings to a log file.
+
+What are logging levels in Python?
+Determening the level of severeness of the error.
+
+What is the parent exception (more general type) for UnicodeError exception in Python?
+ValueError.

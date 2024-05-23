@@ -1,0 +1,5 @@
+John Candy:123 10th st, Allen, TX 78714:972-555-0000:A0000001:email@gmail.com:2500:true
+Robert Smith:456 15th st, Austin, TX 78504:512-456-1000:A0000002:bobsmith@gmail.com:2500:true
+Bill Clinton:2004 44th st, Washington, DC 20001:202-456-2222:A0000003:williamc@gmail.com:495:false
+Patricia Garner:123 16th st, Washington, DC 20002:202-555-6666:A0000004:garnerp@gmail.com:1200:true
+Pablo Corbin:777 2th st, Houston, TX 77002:832-100-2000:A0000005:pcorzbin@yahoo.com:1750:false

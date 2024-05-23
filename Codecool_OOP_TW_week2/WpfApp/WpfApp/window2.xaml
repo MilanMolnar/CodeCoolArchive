@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfApp.window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Detailed Properties" Height="250" Width="620"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True">
+    <StackPanel Height="281">
+        <ListBox x:Name ="listBoxDetails" Margin="0 30 0 0" Height="30" Width="580" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="2.121"/>
+                    <RotateTransform Angle="-0.206"/>
+                    <TranslateTransform X="0.463"/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
+        <TextBlock Margin="20 30 300 0" Text="Comment: " TextWrapping="Wrap" Height="21"/>
+        <TextBox Language="en-US" AcceptsReturn="True" SpellCheck.IsEnabled="True" x:Name="CommentText" Text="" Width="580" Height="50"/>
+        <Button Content="Commit comment" Margin=" 0 20 30 0" Width="120" HorizontalAlignment="Right" Click="Button_Click"/>
+    </StackPanel>
+</Window>
